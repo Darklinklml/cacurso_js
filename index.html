@@ -7,7 +7,44 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div id="app">
+      contador: {{contador}}
+      <button type="button" v-on:click="stopInterval">Detener</button>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script>
+      const holaMundo = {
+        data(){
+          return{
+            contador: 0,
+            interval:null,
+            isRunning:false
+          }
+        },
+        mounted(){
+          this.interval = setInterval(()=>{
+            this.contador++;
+          },1000);
+          this.isRunning= true;
+        },
+        methods: {
+          stopInterval(){
+              if(this.isRunning){
+                clearInterval(this.interval);
+                this.isRunning=false;
+              }
+              else{
+                this.interval = setInterval(()=>{
+                  this.contador++;
+                },1000);
+                this.isRunning= true;
+              }  
+          }
+        }  
+      }
+      
+      var mountedApp = Vue.createApp(holaMundo).mount('#app')
+    </script>
   </body>
 </html>
