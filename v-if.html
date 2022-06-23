@@ -16,7 +16,19 @@
 
   <body>
     <div id="app">
-        
+        <table class="table stripped ">
+          <thead>
+            <th>Nombre</th>
+            <th>Edad</th>
+          </thead>
+          <tbody v-for="usuario in usuarios">
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.edad}}</td>
+          </tbody>
+        </table>
+        <h5 v-if="usuarios[0].edad > usuarios[1].edad"> {{usuarios[0].nombre}} es mayor que {{usuarios[1].nombre}}</h5>
+        <h5 v-else-if="usuarios[0].edad < usuarios[1].edad">{{usuarios[0].nombre}} es menor que {{usuarios[1].nombre}}</h5>
+        <h5 v-else>{{usuarios[0].nombre}} tiene la misma edad {{usuarios[1].nombre}}</h5>
     </div>
     <script src="https://unpkg.com/vue@3"></script>
 
@@ -24,43 +36,16 @@
       const app = {
         data(){
           return{
-           
+            usuarios: [{nombre: 'Gerson', edad:19}, {nombre: 'Carolina', edad:19}]
           }
           
         },
-        beforeCreated(){
-
-        },
-        created(){
-
-
-        },
-        beforeMounted(){
-
+        methods:{
+            
         },
         mounted(){
           
-        },
-        beforeUpdate(){
-
-        },
-        update(){
-
-        },
-        beforeUnmount(){
-
-        },
-        unmount(){
-
-        },
-        methods:{
-           agregarJuego(){
-            
-           }
-        },
-        computed:{
-         
-        },
+        }
       }
       
       var mountedApp = Vue.createApp(app).mount('#app')

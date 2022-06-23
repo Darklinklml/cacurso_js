@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <label v-bind:title="titulo" v-bind:data-hola="titulo">Hola mundo</label>
+      <hr>
+      <button v-on:click="mostrarImagen('js.png')">Imagen JS</button>
+      <button v-on:click="mostrarImagen('css.png')">Imagen CSS</button>
+      <hr>
+      <img v-bind:src="imagen" v-bind:title="imagen">
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script>
+      const holaMundo = {
+        data(){
+          return{
+            titulo: 'Este es un título dinámico.',
+            imagen: 'css.png'
+          }
+          
+        },
+        methods:{
+            mostrarImagen(imagen){
+              this.imagen=imagen
+            }
+          }
+      }
+      
+      var mountedApp = Vue.createApp(holaMundo).mount('#app')
+    </script>
+  </body>
+</html>

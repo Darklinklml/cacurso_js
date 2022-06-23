@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <label >Escribe tu nombre</label>
+      <input type="text" v-model="nombre">
+      <h5>Hola {{nombre}}</h5>
+      <hr>
+      <select v-model="juegos">
+        <option value="TLoZ">TLoZ</option>
+        <option value="Super Mario">Super Mario</option>
+        <option value="DS2">DS2</option>
+        <option value="Pokemon">Pokemon</option>
+      </select>
+      <h5>Juego seleccionado: {{juegos}}</h5>
+      <hr>
+      <Label>{{message}}</Label>
+      <input type="checkbox" v-model="activo" v-on:click="bloqueado()">
+
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script>
+      const holaMundo = {
+        data(){
+          return{
+            nombre: '',
+            juegos: '',
+            activo: false,
+            message: ''
+          }
+          
+        },
+        methods:{
+              bloqueado(){
+                if(this.activo){
+                  this.message='Desbloqueado'
+                }
+                else{
+                  this.message='Bloqueado'
+                }
+              }
+          }
+      }
+      
+      var mountedApp = Vue.createApp(holaMundo).mount('#app')
+    </script>
+  </body>
+</html>

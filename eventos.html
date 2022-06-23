@@ -16,51 +16,41 @@
 
   <body>
     <div id="app">
-        
+        <button class="btn" @click="(contador++)">Haz clic</button>
+        {{contador}}
+        <hr>
+        <select v-on:change="cambiarImagen($event)" class="browser-default">
+          <option value="css.png">CSS</option>
+          <option value="js.png">JS</option>
+          <option value="oot.jpg">Ocarina of Time</option>
+          <option value="majoras.png">Majora's Mask</option>
+        </select>
+        <hr>
+        <button class="btn" @mouseout="(estado=false)" @mouseover="(estado=true)">Pon el puntero sobre mi</button>
+        {{estado}}
+        <hr>
+        <img v-bind:src="imagen" v-show="estado">
     </div>
     <script src="https://unpkg.com/vue@3"></script>
-
+    //tipos de eventos keydown, load, mouseover, mouseout, click,
     <script>
       const app = {
         data(){
           return{
-           
+            contador:0,
+            estado: false,
+            imagen: ''
           }
           
         },
-        beforeCreated(){
-
-        },
-        created(){
-
-
-        },
-        beforeMounted(){
-
+        methods:{
+            cambiarImagen(event){
+              this.imagen= event.target.value;
+            }
         },
         mounted(){
           
-        },
-        beforeUpdate(){
-
-        },
-        update(){
-
-        },
-        beforeUnmount(){
-
-        },
-        unmount(){
-
-        },
-        methods:{
-           agregarJuego(){
-            
-           }
-        },
-        computed:{
-         
-        },
+        }
       }
       
       var mountedApp = Vue.createApp(app).mount('#app')
